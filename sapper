@@ -9,12 +9,10 @@ clicked = set()
 
 
 def check_mines(neighbors):
-    """ Функция, возвращающая количество мин вокруг neighbors """
     return len(mines.intersection(neighbors))
 
 
 def generate_neighbors(square):
-    """ Возвращает клетки соседствующие с square """
     if square == 1:
         data = {GRID_SIZE + 1, 2, GRID_SIZE + 2}
     elif square == GRID_SIZE ** 2:
