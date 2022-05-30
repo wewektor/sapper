@@ -41,7 +41,6 @@ def generate_neighbors(square):
 
 
 def clearance(ids):
-    """ Итеративная (эффективная) функция очистки поля """
     clicked.add(ids) 
     ids_neigh = generate_neighbors(ids) 
     around = check_mines(ids_neigh) 
