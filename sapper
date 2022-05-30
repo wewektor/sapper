@@ -7,6 +7,17 @@ MINES_NUM = 40
 mines = set(random.sample(range(1, GRID_SIZE**2+1), MINES_NUM)) 
 clicked = set() 
 
+root = Tk()
+root.title("Pythonicway Minesweep")
+c = Canvas(root, width=GRID_SIZE * SQUARE_SIZE, height=GRID_SIZE * SQUARE_SIZE)
+c.bind("<Button-1>", click)
+c.bind("<Button-3>", mark_mine)
+c.pack()
+for i in range(GRID_SIZE):
+    for j in range(GRID_SIZE):
+      c.create_rectangle(i * SQUARE_SIZE, j * SQUARE_SIZE,
+                         i * SQUARE_SIZE + SQUARE_SIZE,
+                         j * SQUARE_SIZE + SQUARE_SIZE, fill='gray')
 
 def check_mines(neighbors):
     return len(mines.intersection(neighbors))
@@ -121,16 +132,6 @@ def mark_mine(event):
         c.itemconfig(CURRENT, fill="gray")
 
 
-root = Tk()
-root.title("Pythonicway Minesweep")
-c = Canvas(root, width=GRID_SIZE * SQUARE_SIZE, height=GRID_SIZE * SQUARE_SIZE)
-c.bind("<Button-1>", click)
-c.bind("<Button-3>", mark_mine)
-c.pack()
-for i in range(GRID_SIZE):
-    for j in range(GRID_SIZE):
-      c.create_rectangle(i * SQUARE_SIZE, j * SQUARE_SIZE,
-                         i * SQUARE_SIZE + SQUARE_SIZE,
-                         j * SQUARE_SIZE + SQUARE_SIZE, fill='gray')
+
 
 root.mainloop()
